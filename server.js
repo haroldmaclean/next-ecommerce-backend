@@ -9,6 +9,8 @@ const testRoutes = require('./routes/testRoutes')
 const errorHandler = require('./middlewares/errorHandler')
 const checkoutRoutes = require('./routes/checkout')
 
+console.log('📦 Starting server.js...')
+
 dotenv.config()
 connectDB()
 
