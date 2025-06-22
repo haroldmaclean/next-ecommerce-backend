@@ -7,16 +7,28 @@ const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes')
 const testRoutes = require('./routes/testRoutes')
 const errorHandler = require('./middlewares/errorHandler')
-const checkoutRoute = require('./routes/checkout')
+const checkoutRoutes = require('./routes/checkout')
 
 dotenv.config()
 connectDB()
 
 const app = express()
 
-app.use('/api/checkout', checkoutRoute)
+// app.use(cors()) // ✅ Enable CORS for all origins
+const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3000']
 
-app.use(cors()) // ✅ Enable CORS for all origins
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    },
+    credentials: true,
+  })
+)
 
 app.use(express.json())
 
@@ -24,6 +36,7 @@ app.use(express.json())
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/test', testRoutes)
+app.use('/api', checkoutRoutes) // ✅ This creates /api/checkout
 
 app.use(errorHandler)
 
