@@ -1,5 +1,5 @@
 const express = require('express')
-const cors = require('cors') // ✅ Import CORS
+const cors = require('cors')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 
@@ -8,6 +8,7 @@ const productRoutes = require('./routes/productRoutes')
 const testRoutes = require('./routes/testRoutes')
 const errorHandler = require('./middlewares/errorHandler')
 const checkoutRoutes = require('./routes/checkout')
+const adminRoutes = require('./routes/adminRoutes')
 
 console.log('📦 Starting server.js...')
 
@@ -16,7 +17,6 @@ connectDB()
 
 const app = express()
 
-// app.use(cors()) // ✅ Enable CORS for all origins
 const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3000']
 
 app.use(
@@ -34,11 +34,12 @@ app.use(
 
 app.use(express.json())
 
-// Routes
+// ✅ Routes
+app.use('/api', userRoutes) // now supports /api/register, /api/login
 app.use('/api/products', productRoutes)
-app.use('/api/users', userRoutes)
 app.use('/api/test', testRoutes)
-app.use('/api', checkoutRoutes) // ✅ This creates /api/checkout
+app.use('/api', checkoutRoutes)
+app.use('/api', adminRoutes)
 
 app.use(errorHandler)
 
