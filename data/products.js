@@ -1,46 +1,45 @@
 const products = [
   {
     name: 'Wireless Headphones',
-    price: 149.99,
     description: 'High quality noise-canceling headphones.',
+    price: 149.99,
     image:
-      'https://images.unsplash.com/photo-1580894732444-14ffb031f596?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1678953847562-ac509f09515b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM0fHx8ZW58MHx8fHx8',
   },
   {
     name: 'Smart Watch',
-    price: 99.99,
     description: 'Stay connected on the go.',
+    price: 99.99,
     image:
-      'https://images.unsplash.com/photo-1606813908887-9ab63e788fe5?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFNtYXJ0JTIwV2F0Y2h8ZW58MHx8MHx8fDA%3D',
   },
   {
     name: 'Bluetooth Speaker',
-    price: 59.99,
     description: 'Powerful sound in a compact design.',
+    price: 59.99,
     image:
-      'https://images.unsplash.com/photo-1593804568509-599893d1a3ff?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Qmx1ZXRvb3RoJTIwU3BlYWtlcnxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     name: 'Apple iPhone 15',
-    price: 999.99,
     description: 'Next-generation smartphone with advanced features.',
+    price: 999.99,
     image:
-      'https://images.unsplash.com/photo-1611122885640-07f9308d0321?auto=format&fit=crop&w=600&q=80',
+      'hhttps://images.unsplash.com/photo-1697284958332-93444aeb4efb?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QXBwbGUlMjBpUGhvbmUlMjAxNXxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     name: 'MacBook Air',
-    price: 1199.99,
     description: 'Lightweight and powerful laptop for everyday use.',
+    price: 1199.99,
     image:
-      'https://images.unsplash.com/photo-1611095973515-8e83f5cc51fc?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8TWFjQm9vayUyMEFpcnxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
     name: 'Portable Speaker',
-    price: 39.99,
     description: 'Take your music anywhere with this compact speaker.',
+    price: 39.99,
     image:
-      'https://images.unsplash.com/photo-1581265368220-50f4176ba06a?auto=format&fit=crop&w=600&q=80',
+      'https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UG9ydGFibGUlMjBTcGVha2VyfGVufDB8fDB8fHww',
   },
 ]
-
 module.exports = products
