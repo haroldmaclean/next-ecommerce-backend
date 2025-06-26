@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,8 +18,16 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false, // ✅ Include this
+    },
   },
-  { timestamps: true }
-);
 
-module.exports = mongoose.model("User", userSchema);
+  { timestamps: true }
+)
+
+// module.exports = mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model('User', userSchema)
+
+module.exports = User

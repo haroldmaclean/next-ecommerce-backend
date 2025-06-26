@@ -9,6 +9,7 @@ const testRoutes = require('./routes/testRoutes')
 const errorHandler = require('./middlewares/errorHandler')
 const checkoutRoutes = require('./routes/checkout')
 const adminRoutes = require('./routes/adminRoutes')
+const profileRoutes = require('./routes/profile')
 
 console.log('📦 Starting server.js...')
 
@@ -35,6 +36,7 @@ app.use(
 app.use(express.json())
 
 // ✅ Routes
+app.use('/api', profileRoutes)
 app.use('/api', userRoutes) // now supports /api/register, /api/login
 app.use('/api/products', productRoutes)
 app.use('/api/test', testRoutes)
