@@ -18,7 +18,12 @@ connectDB()
 
 const app = express()
 
-const allowedOrigins = [process.env.CLIENT_URL, 'http://localhost:3000']
+// ✅ Allow both Vercel, Render, and localhost frontend origins
+const allowedOrigins = [
+  'https://next-ecommerce-store-qfqo.vercel.app',
+  'https://next-ecommerce-store.onrender.com',
+  'http://localhost:3000'
+]
 
 app.use(
   cors({
@@ -29,7 +34,7 @@ app.use(
         callback(new Error('Not allowed by CORS'))
       }
     },
-    credentials: true,
+    credentials: true
   })
 )
 
@@ -37,7 +42,7 @@ app.use(express.json())
 
 // ✅ Routes
 app.use('/api', profileRoutes)
-app.use('/api', userRoutes) // now supports /api/register, /api/login
+app.use('/api', userRoutes) // supports /api/register, /api/login
 app.use('/api/products', productRoutes)
 app.use('/api/test', testRoutes)
 app.use('/api', checkoutRoutes)
