@@ -22,7 +22,7 @@ const app = express()
 const allowedOrigins = [
   'https://next-ecommerce-store-qfqo.vercel.app',
   'https://next-ecommerce-store.onrender.com',
-  'http://localhost:3000'
+  'http://localhost:3000',
 ]
 
 app.use(
@@ -34,15 +34,20 @@ app.use(
         callback(new Error('Not allowed by CORS'))
       }
     },
-    credentials: true
+    credentials: true,
   })
 )
 
 app.use(express.json())
 
-// ✅ Routes
+// ✅ 🔧 Debug route to test POST requests (add before all routes)
+app.post('/debug', (req, res) => {
+  res.json({ message: '✅ Debug POST works!' })
+})
+
+// ✅ Main API Routes
 app.use('/api', profileRoutes)
-app.use('/api', userRoutes) // supports /api/register, /api/login
+app.use('/api/users', userRoutes) // supports /api/users/register, /api/users/login
 app.use('/api/products', productRoutes)
 app.use('/api/test', testRoutes)
 app.use('/api', checkoutRoutes)
@@ -52,3 +57,4 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
+
