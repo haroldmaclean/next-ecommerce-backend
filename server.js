@@ -22,6 +22,8 @@ const app = express()
 // ✅ Allow both Vercel, Render, and localhost frontend origins
 const allowedOrigins = [
   'https://next-ecommerce-store-qfqo.vercel.app',
+  // 👇 ADD YOUR CURRENT VERCEl DOMAIN HERE:
+  'https://next-ecommerce-store-jet.vercel.app',
   'https://next-ecommerce-store.onrender.com',
   'http://localhost:3000',
 ]
