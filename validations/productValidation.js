@@ -28,6 +28,15 @@ const createProductSchema = Joi.object({
       'string.pattern.base': 'Image must be a full URL or start with /images/',
       'any.required': 'Image URL is required.',
     }),
+
+  // ✅ Add category validation
+  category: Joi.string()
+    .valid('electronics', 'fashion', 'furniture')
+    .required()
+    .messages({
+      'any.only': 'Category must be one of electronics, fashion, or furniture.',
+      'any.required': 'Product category is required.',
+    }),
 })
 
 const updateProductSchema = Joi.object({
@@ -49,6 +58,9 @@ const updateProductSchema = Joi.object({
   image: Joi.string().uri().messages({
     'string.uri': 'Image must be a valid URL.',
   }),
+
+  // ✅ Allow category updates (optional)
+  category: Joi.string().valid('electronics', 'fashion', 'furniture'),
 })
 
 module.exports = { createProductSchema, updateProductSchema }

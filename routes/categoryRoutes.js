@@ -1,0 +1,71 @@
+const express = require('express')
+const router = express.Router()
+const Product = require('../models/productModel')
+
+// GET products by category (and search query)
+router.get('/:category', async (req, res) => {
+  try {
+    const category = req.params.category
+    const searchQuery = req.query.search // <-- NEW: Get search query from URL
+
+    // Base filter: always filter by category
+    let filter = { category }
+
+    // If a search query is provided, add name filtering (case-insensitive)
+    if (searchQuery) {
+      filter.name = { $regex: searchQuery, $options: 'i' }
+      console.log(`Searching for "${searchQuery}" in category: ${category}`)
+    } else {
+      console.log(`Fetching all products for category: ${category}`)
+    }
+
+    // Use the combined filter to find products
+    const products = await Product.find(filter)
+
+    if (products.length === 0) {
+      // Return 200 OK with empty array if category exists but has no matching products
+      if (!searchQuery) {
+        return res
+          .status(404)
+          .json({ message: 'No products found for this category' })
+      } else {
+        // If search was involved, just return an empty array (200 OK)
+        return res.json([])
+      }
+    }
+
+    res.json(products)
+  } catch (err) {
+    console.error('Error fetching category products:', err)
+    res.status(500).json({ message: 'Server error' })
+  }
+})
+
+module.exports = router
+
+// const express = require('express')
+// const router = express.Router()
+// const Product = require('../models/productModel')
+
+// // GET products by category
+// router.get('/:category', async (req, res) => {
+//   try {
+//     const category = req.params.category
+//     console.log(category)
+//     const products = await Product.find({ category })
+
+//     if (products.length === 0) {
+//       console.log(products)
+//       return res
+//         .status(404)
+//         .json({ message: 'No products found for this category' })
+//     }
+
+//     res.json(products)
+//   } catch (err) {
+//     console.error('Error fetching category products:', err)
+//     res.status(500).json({ message: 'Server error' })
+//   }
+// })
+
+// module.exports = router

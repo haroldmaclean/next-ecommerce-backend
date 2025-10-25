@@ -5,6 +5,7 @@ const connectDB = require('./config/db')
 
 const userRoutes = require('./routes/userRoutes')
 const productRoutes = require('./routes/productRoutes')
+const categoryRoutes = require('./routes/categoryRoutes')
 const testRoutes = require('./routes/testRoutes')
 const errorHandler = require('./middlewares/errorHandler')
 const checkoutRoutes = require('./routes/checkout')
@@ -49,6 +50,7 @@ app.post('/debug', (req, res) => {
 app.use('/api', profileRoutes)
 app.use('/api/users', userRoutes) // supports /api/users/register, /api/users/login
 app.use('/api/products', productRoutes)
+app.use('/api/categories', categoryRoutes)
 app.use('/api/test', testRoutes)
 app.use('/api', checkoutRoutes)
 app.use('/api', adminRoutes)
@@ -57,4 +59,3 @@ app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
-

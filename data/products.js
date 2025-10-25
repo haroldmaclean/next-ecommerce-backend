@@ -5,6 +5,7 @@ const products = [
     price: 149.99,
     image:
       'https://images.unsplash.com/photo-1678953847562-ac509f09515b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM0fHx8ZW58MHx8fHx8',
+    category: 'electronics',
   },
   {
     name: 'Smart Watch',
@@ -12,6 +13,7 @@ const products = [
     price: 99.99,
     image:
       'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fFNtYXJ0JTIwV2F0Y2h8ZW58MHx8MHx8fDA%3D',
+    category: 'electronics',
   },
   {
     name: 'Bluetooth Speaker',
@@ -19,6 +21,7 @@ const products = [
     price: 59.99,
     image:
       'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Qmx1ZXRvb3RoJTIwU3BlYWtlcnxlbnwwfHwwfHx8MA%3D%3D',
+    category: 'electronics',
   },
   {
     name: 'Apple iPhone 15',
@@ -26,6 +29,7 @@ const products = [
     price: 999.99,
     image:
       'https://images.unsplash.com/photo-1697284959152-32ef13855932?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aXBob25lJTIwMTV8ZW58MHx8MHx8fDA%3D',
+    category: 'electronics',
   },
   {
     name: 'MacBook Air',
@@ -33,6 +37,7 @@ const products = [
     price: 1199.99,
     image:
       'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8TWFjQm9vayUyMEFpcnxlbnwwfHwwfHx8MA%3D%3D',
+    category: 'electronics',
   },
   {
     name: 'Portable Speaker',
@@ -40,6 +45,7 @@ const products = [
     price: 39.99,
     image:
       'https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8UG9ydGFibGUlMjBTcGVha2VyfGVufDB8fDB8fHww',
+    category: 'electronics',
   },
 ]
 module.exports = products

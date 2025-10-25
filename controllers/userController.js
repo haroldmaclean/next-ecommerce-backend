@@ -31,7 +31,7 @@ exports.registerUser = async (req, res, next) => {
     const token = jwt.sign(
       { id: savedUser._id, role: savedUser.role }, // ✅ Include role in token
       process.env.JWT_SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '30d' }
     )
 
     res.status(201).json({
