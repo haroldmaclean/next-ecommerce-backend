@@ -2,6 +2,11 @@ const express = require('express')
 const router = express.Router()
 const Product = require('../models/productModel')
 
+// TEMP DEBUG ROUTE
+router.get('/testload', (req, res) => {
+  res.json({ message: 'Category routes file loaded successfully!' })
+})
+
 // GET products by category (and search query)
 router.get('/:category', async (req, res) => {
   try {
