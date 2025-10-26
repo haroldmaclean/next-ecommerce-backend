@@ -11,30 +11,32 @@ router.get('/testload', (req, res) => {
 router.get('/:category', async (req, res) => {
   try {
     const category = req.params.category
-    const searchQuery = req.query.search // <-- NEW: Get search query from URL
+    const searchQuery = req.query.search // Base filter: FIX: Use case-insensitive regex for category matching
 
-    // Base filter: always filter by category
-    let filter = { category }
+    let filter = {
+      category: { $regex: new RegExp(category, 'i') },
+    } // If a search query is provided, add name filtering (case-insensitive)
 
-    // If a search query is provided, add name filtering (case-insensitive)
     if (searchQuery) {
       filter.name = { $regex: searchQuery, $options: 'i' }
       console.log(`Searching for "${searchQuery}" in category: ${category}`)
     } else {
       console.log(`Fetching all products for category: ${category}`)
-    }
+    } // Use the combined filter to find products
 
-    // Use the combined filter to find products
     const products = await Product.find(filter)
 
     if (products.length === 0) {
-      // Return 200 OK with empty array if category exists but has no matching products
+      // NOTE: If the debug test worked, this 404 is the issue.
+      // We will now return the 404 only if the category itself is invalid,
+      // not just if the search yields zero results.
       if (!searchQuery) {
         return res
           .status(404)
           .json({ message: 'No products found for this category' })
       } else {
-        // If search was involved, just return an empty array (200 OK)
+        // If search was involved, return empty array (200 OK) so the client can display
+        // the "no results" message cleanly.
         return res.json([])
       }
     }
